@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            overflow: hidden;
+            transition: background-color 0.5s ease; /* Smooth transition for background color change */
+        }
+        .countdown {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 2em;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="countdown" id="countdown">
+        Countdown goes here...
+    </div>
+
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("June 24, 2024 13:25:00").getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+            // Get today's date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for seconds
+            var seconds = Math.floor(distance / 1000);
+
+            // Output the result in an element with id="countdown"
+            if (distance >= 0) {
+                document.getElementById("countdown").innerHTML = seconds + " seconds until Noopur is back in Mumbai!!!";
+            } else {
+                document.getElementById("countdown").innerHTML = "0 seconds until Noopur is back in Mumbai!!!";
+                clearInterval(x);
+                startDiscoEffect();
+            }
+        }, 1000);
+
+        // Function to start the disco background effect
+        function startDiscoEffect() {
+            setInterval(function() {
+                document.body.style.backgroundColor = getRandomColor();
+            }, 1000); // Change color every second
+        }
+
+        // Function to get random color
+        function getRandomColor() {
+            var letters = "0123456789ABCDEF";
+            var color = "#";
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    </script>
+</body>
+</html>
